@@ -19,9 +19,19 @@ const tasks = [
         state: "test2"
     }
 ];
+const WithTaskPinned = [
+    ...tasks,
+    {
+        id: 3,
+        title: "Adum3",
+        state: "TASK_PINNED"
+    }
+]
 
 export const Default = () => <TaskList tasks={tasks} loading={false} actions ={actionsData} />;
 
-export const loading = () => <TaskList loading={true} />;
+export const Loading = () => <TaskList loading={true} />;
 
-export const emply = () => <TaskList tasks={[]} />;
+export const Emply = () => <TaskList tasks={[]} />;
+
+export const WithPinnedTask = () => <TaskList tasks={WithTaskPinned} />;
