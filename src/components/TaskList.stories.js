@@ -1,6 +1,7 @@
 import React from "react";
 import TaskList from "./TaskList";
 import {actionsData} from "./Task.stories";
+import { action } from "@storybook/addon-actions";
 
 export default {
   component: TaskList,
@@ -34,4 +35,4 @@ export const Loading = () => <TaskList loading={true} />;
 
 export const Emply = () => <TaskList tasks={[]} />;
 
-export const WithPinnedTask = () => <TaskList tasks={WithTaskPinned} />;
+export const WithPinnedTask = () => <TaskList tasks={WithTaskPinned} actions ={actionsData} />;

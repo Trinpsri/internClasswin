@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Task from "./Task";
 import { action } from "@storybook/addon-actions";
 
@@ -25,6 +26,7 @@ function TaskList({ tasks, loading, actions }) {
             {loadingRow}
         </div>
     }
+
     if (tasks.length === 0) {
         return (
             <div className="list-items">
@@ -37,14 +39,28 @@ function TaskList({ tasks, loading, actions }) {
         );
     }
 
+    const taskInOrder = [
+        ...tasks.filter(task => task.state === "TASK_PINNED"),
+        ...tasks.filter(task => task.state !== "TASK_PINNED"),
+    ];
+
     return (
         <div className="List-items">
-            {tasks.map(task => (
+            {taskInOrder.map(task => (
                 <Task task={task} actions={actions} {...actions} />
             ))}
         </div>
     );
 }
 
+TaskList.propTypes = {
+    loading: PropTypes.bool,
+    task: PropTypes.arrayOf(Task.propTypes.task)
+};
+
+TaskList.defaultProp = {
+    loading: false,
+    tasks: []
+}
 
 export default TaskList;
