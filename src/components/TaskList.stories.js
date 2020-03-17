@@ -10,12 +10,12 @@ export default {
 
 const tasks = [
     {
-        id: 1,
+        id: "1",
         title: "Adum1",
         state: "test1"
     },
     {
-        id: 2,
+        id: "2",
         title: "Adum2",
         state: "test2"
     }
@@ -23,7 +23,7 @@ const tasks = [
 const WithTaskPinned = [
     ...tasks,
     {
-        id: 3,
+        id: "3",
         title: "Adum3",
         state: "TASK_PINNED"
     }
