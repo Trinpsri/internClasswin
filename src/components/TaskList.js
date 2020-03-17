@@ -25,8 +25,16 @@ function TaskList({ tasks, loading, actions }) {
             {loadingRow}
         </div>
     }
-    if (tasks.Length === 0){
-        return <div className="list-items">No items</div>
+    if (tasks.length === 0) {
+        return (
+            <div className="list-items">
+                <div className="wrapper-message">
+                    <span className="icon-check"/>
+                    <div className="title-message">Youhave no tasks</div>
+                    <div className="Subtitle message">Sit back and relax</div>
+                </div>
+            </div>
+        );
     }
 
     return (
