@@ -1,5 +1,6 @@
 import React from "react";
 import TaskList from "./TaskList";
+import {actionsData} from "./Task.stories";
 
 export default {
   component: TaskList,
@@ -19,4 +20,4 @@ const tasks = [
     }
 ];
 
-export const Default = () => <TaskList tasks={tasks} loading={false}/>;
+export const Default = () => (<TaskList tasks={tasks} loading={false} actions ={actionsData}/>);
