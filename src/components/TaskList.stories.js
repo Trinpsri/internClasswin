@@ -20,4 +20,8 @@ const tasks = [
     }
 ];
 
-export const Default = () => (<TaskList tasks={tasks} loading={false} actions ={actionsData}/>);
+export const Default = () => <TaskList tasks={tasks} loading={false} actions ={actionsData} />;
+
+export const loading = () => <TaskList loading={true} />;
+
+export const emply = () => <TaskList tasks={[]} />;
