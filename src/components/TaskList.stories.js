@@ -1,38 +1,41 @@
 import React from "react";
-import TaskList from "./TaskList";
-import {actionsData} from "./Task.stories";
+
 import { action } from "@storybook/addon-actions";
 
+import { PureTaskList } from "./TaskList";
+import { taskData, actionsData } from "./Task.stories";
+
 export default {
-  component: TaskList,
-  title: "TaskList"
+  component: PureTaskList,
+  title: "TaskList",
+  decorators: [story => <div style={{ padding: "3rem" }}>{story()}</div>],
+  excludeStories: /.*Data$/
 };
 
-const tasks = [
-    {
-        id: "1",
-        title: "Adum1",
-        state: "test1"
-    },
-    {
-        id: "2",
-        title: "Adum2",
-        state: "test2"
-    }
+export const defaultTasksData = [
+  { ...taskData, id: "1", title: "Task 1" },
+  { ...taskData, id: "2", title: "Task 2" },
+  { ...taskData, id: "3", title: "Task 3" },
+  { ...taskData, id: "4", title: "Task 4" },
+  { ...taskData, id: "5", title: "Task 5" },
+  { ...taskData, id: "6", title: "Task 6" }
 ];
-const WithTaskPinned = [
-    ...tasks,
-    {
-        id: "3",
-        title: "Adum3",
-        state: "TASK_PINNED"
-    }
-]
 
-export const Default = () => <TaskList tasks={tasks} loading={false} actions ={actionsData} />;
+export const withPinnedTasksData = [
+  ...defaultTasksData.slice(0, 5),
+  { id: "6", title: "Task 6 (pinned)", state: "TASK_PINNED" }
+];
 
-export const Loading = () => <TaskList loading={true} />;
+export const Default = () => (
+  <PureTaskList tasks={defaultTasksData} {...actionsData} />
+);
 
-export const Emply = () => <TaskList tasks={[]} />;
+export const WithPinnedTasks = () => (
+  <PureTaskList tasks={withPinnedTasksData} {...actionsData} />
+);
 
-export const WithPinnedTask = () => <TaskList tasks={WithTaskPinned} actions ={actionsData} />;
+export const Loading = () => (
+  <PureTaskList loading tasks={[]} {...actionsData} />
+);
+
+export const Empty = () => <PureTaskList tasks={[]} {...actionsData} />;
